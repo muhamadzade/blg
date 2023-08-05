@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>لایتک</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">وب لاگ محمدزاده</a></h1>
-        </header>
-
+{% extends 'blog/base.html' %}
+{% block content %}
         {% for post in posts %}
-        <article>
-            <time>
+        <article class="post">
+            <time class="date">
                 {{post.published_date}}
             </time><br>
-            <time>
-                {{post.created_date}}
-            </time>
-            <h2><a href="">{{post.title}}</a></h2>
-            <p>{{post.text|linebreaksbr}}</p>
+
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h2>
 
         <hr>
     </article>
     {% endfor %}
-
-
-    </body>
-</html>
+{% endblock %}
